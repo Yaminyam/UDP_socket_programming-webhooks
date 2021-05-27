@@ -16,13 +16,13 @@ except socket.error:
 def checksum(chunk_file):
     data = 0
     for i in range(0, len(chunk_file), 2):
-        data1 = chunk_file[i].hex() + chunk_file[i+1].hex()
-        data1 = int(data1, 16)
+        data1 = chunk_file[i] * 256 + chunk_file[i+1]
         data = data + data1
         if data > 0xffff:
             data = data & 0xffff
             data += 1
     data = ~data
+    data = data & 0xffff
     return bytes([data//256, data%256])
 
 def sender_send(file_name):
