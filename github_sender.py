@@ -28,7 +28,6 @@ def checksum(chunk_file):
 def sender_send(file_name):
 	#
 	# Implement in the order mentioned in the silde and video.
-	#
     s.sendto("valid".encode(), client_addr)
     print("valid list command")
     if os.path.isfile(file_name):
