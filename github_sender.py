@@ -50,6 +50,8 @@ def sender_send(file_name):
             header = src_ip + dst_ip + zero + protocol + udp_len + src_port + dst_port + length + checksum(chunk_file)
             s.sendto(header + chunk_file, client_addr)
             print("packet number ",cnt)
+            print("### final checksum ###")
+            print(checksum(chunk_file))
             cnt += 1
 
 if __name__ == "__main__":
